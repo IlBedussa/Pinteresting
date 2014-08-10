@@ -10,11 +10,13 @@
         <p><%= @pin.description %></p>
         <p><strong><%= @pin.user.email if @pin.user %></strong></p>
 
-        <% if @pin.user == current_user %>
-         <%= link_to 'Edit', edit_pin_path(@pin) %>
-        <% end %>
+         <%= link_to edit_pin_path(@pin) do %>
+        <span class="glyphicon glyphicon-edit"></span>
+        Edit
+      <% end %>
 
       </div>
     </div>
   </div>
 </div>
+

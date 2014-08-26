@@ -17,6 +17,11 @@ gem 'masonry-rails', '~> 0.2.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+
 
 
 

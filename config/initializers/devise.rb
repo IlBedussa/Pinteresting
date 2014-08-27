@@ -256,6 +256,4 @@ Devise.setup do |config|
   require 'omniauth-twitter'
   config.omniauth :facebook, "1459207994334269", "6555a9c95ef32ed0a612f17f7283745f"
   config.omniauth :twitter, "IXNZtymDdimnx0PuYC0xzfDK5", "kxbTTA9bZkzPVBqq6T35kCfMSVRwyrRbHwZbfmzjifDQoECHcD"
-  config.omniauth :linkedin, "753vfjxvy9vqxd", "l3Kij6TVRGc6qLhC" 
-  config.omniauth :google_oauth2, "981025173305-0uvegd7hb9f5hcb4980vm6ouubqmm944.apps.googleusercontent.com", "oxYkx0ryGRTUH7oW3ECpTei6"
 end

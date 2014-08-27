@@ -1,20 +1,23 @@
-Working!!!
+<%= render 'pages/home' unless user_signed_in? %>
 
-= @current_user.try(:unconfirmed_email)
+<<div id="pins" class="transitions-enabled">
+  <% @pins.each do |pin| %>
+    <div class="box panel panel-default">
+      <%= link_to image_tag(pin.image.url(:medium)), pin %>
+      <div class="panel-body">
+        <%= pin.description %><br/>
+        <strong><%= pin.user.email if pin.user %></strong>
+        <% if pin.user == current_user %>
+          <div class="actions">
+            <%= link_to 'Edit', edit_pin_path(pin) %>
+            <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-%div.ui.clearing.divider
-
-#user_nav
-  = link_to "Sign in with Twitter", user_omniauth_authorize_path("twitter")
-
-#user_nav
-  = link_to "Sign in with Facebook", user_omniauth_authorize_path("facebook")
-  
-#user_nav
-  = link_to "Sign in with Linkedin", user_omniauth_authorize_path("linkedin")
-
-#user_nav
-  = link_to "Sign in with Google", user_omniauth_authorize_path("google_oauth2")
-
-
-= link_to "Devise Tutorial", "http://sourcey.com/rails-4-omniauth-using-devise-with-twitter-facebook-and-linkedin/", :class => "ui teal label" 
+<div class="center">
+   <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div> 

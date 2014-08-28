@@ -20,7 +20,7 @@ gem 'will_paginate-bootstrap'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth'
-
+gem 'font-awesome-less'
 
 
 

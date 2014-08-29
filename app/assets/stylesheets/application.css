@@ -14,3 +14,5 @@
   *= require 'masonry/transitions'
   *= require_tree  . 
   */
+ *= require font-awesome
+ *= require_self

@@ -1,10 +1,14 @@
 <div class="jumbotron center">
   <h1>Welcome to my app!</h1>
   <p>
-    <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %> 
     <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
-  	<%= link_to "Twitter", user_omniauth_authorize_path("twitter"), class: "btn btn-primary btn-lg" %>
-  	<%= link_to "Facebook", user_omniauth_authorize_path("facebook"),class: "btn btn-primary btn-lg" %>
+  	<%= link_to user_omniauth_authorize_path("twitter") do %>
+  		<button class="btn btn-twitter btn-lg"><i class="fa fa-twitter"></i> | Connect with Twitter</button>
+ 	<%end%>
+  	<%= link_to user_omniauth_authorize_path("facebook") do %>
+ 		<button class="btn btn-facebook btn-lg"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
+ 	<%end%>
   </p>
 
 </div>

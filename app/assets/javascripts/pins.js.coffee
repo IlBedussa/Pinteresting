@@ -8,6 +8,9 @@ $ ->
       itemSelector: '.box'
       isFitWidth: true
 
-  $('#happyBdayBtn').click ->
-    $('#loginBtns').removeClass("hidden")
-    $('#happyBdayBtn').addClass("hidden")
+  $("#happyBdayBtn").click (event) ->
+    $("#loginBtns").removeClass "hidden"
+    $("#happyBdayBtn").addClass("hidden")
+    event.preventDefault()
+    return
+    

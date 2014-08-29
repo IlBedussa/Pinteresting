@@ -7,3 +7,7 @@ $ ->
     $('#pins').masonry
       itemSelector: '.box'
       isFitWidth: true
+
+  $('#happyBdayBtn').click ->
+    $('#loginBtns').removeClass("hidden")
+    $('#happyBdayBtn').addClass("hidden")

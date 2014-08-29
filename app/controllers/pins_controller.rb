@@ -20,6 +20,11 @@ class PinsController < ApplicationController
   def create
     @pin = current_user.pins.build(pin_params)
     if @pin.save
+      @user = current_user;
+      if !blank? === @user.email
+        # Tell the UserMailer to send a thank you Email after user creats a pin
+        UserMailer.thanks_email(@user).deliver
+      end
       redirect_to @pin, notice: 'Pin was successfully created.'
     else
       render action: 'new'

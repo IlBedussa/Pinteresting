@@ -4,6 +4,6 @@ class UserMailer < ActionMailer::Base
   def thanks_email(user)
     @user = user
     @url  = "http://omr-pinteresting18.herokuapp.com/"
-    mail(:to => @user.name, :subject => "Thanks for your wishes :)")
+    mail(:to => @user.email, :subject => "Thanks for your wishes :)")
   end
 end

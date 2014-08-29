@@ -20,8 +20,7 @@ gem 'will_paginate-bootstrap'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth'
-gem 'font-awesome-sass'
-
+gem 'font-awesome-sass', '~> 4.2.0'
 
 
 group :development,  :test do

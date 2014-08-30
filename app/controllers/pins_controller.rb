@@ -2,6 +2,8 @@ class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :validate_pins_count, only: [:new, :create]
+ 
   def index
     @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
@@ -55,5 +57,12 @@ class PinsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def pin_params
     params.require(:pin).permit(:description, :image)
+  end
+  
+  #User can create only one pin
+  def validate_pins_count
+      if current_user.pins.count >= 1
+        redirect_to pins_url, notice: 'You can create only one pin.'
+      end
   end
 end

@@ -17,7 +17,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "About", about_path %></li>
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.pins.count == 0 %>
           <li>
             <%= link_to new_pin_path do %>
               <span class="glyphicon glyphicon-plus"></span> New Pin

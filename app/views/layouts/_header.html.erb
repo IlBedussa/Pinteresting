@@ -19,9 +19,11 @@
         <li><%= link_to "About", about_path %></li>
         <% if user_signed_in? %>
           <li>
+          	<% if current_user.pins.count == 0 %>
             <%= link_to new_pin_path do %>
               <span class="glyphicon glyphicon-plus"></span> New Pin
             <% end %>
+        <% end %>
           </li>
           <li>
             <%= link_to edit_user_registration_path do %>

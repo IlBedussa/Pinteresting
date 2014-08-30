@@ -1,9 +1,14 @@
 <div class="jumbotron center">
+	
   <h1 style="font-size:50px !important;">Hi! Today I'm 21! Its my Birthday! So cool,right?</h1>
   <% if user_signed_in? %>
   	<div>
   	<p>
-		<%= link_to "Say Happy Birthday ;-)",new_pin_path ,class: "btn btn-primary btn-lg" %>  		
+  		<%if current_user.pins.count > 0 %>
+  			<h2 style="font-size:50px !important;">Thanks for your wishes! :)</h2>
+  		<% else %>
+			<%= link_to "Say Happy Birthday ;-)",new_pin_path ,class: "btn btn-primary btn-lg" %>  		
+  		<%end %>
   	</p>
   </div>
  <%else %>

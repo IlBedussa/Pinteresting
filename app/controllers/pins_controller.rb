@@ -3,9 +3,9 @@ class PinsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :validate_pins_count, only: [:new, :create]
+  before_action :list_all_pins, only: [:new, :index]
  
   def index
-    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
 
   def show
@@ -64,5 +64,10 @@ class PinsController < ApplicationController
       if current_user.pins.count >= 1
         redirect_to pins_url, notice: 'You can create only one pin.'
       end
+  end
+  
+  #to get all pins
+  def list_all_pins
+    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
 end

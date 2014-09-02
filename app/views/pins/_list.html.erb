@@ -1,19 +1,44 @@
-<<div id="pins" class="transitions-enabled">
-  <% @pins.each do |pin| %>
-    <div class="box panel panel-default">
-      <%= link_to image_tag(pin.image.url(:medium)), pin %>
-      <div class="panel-body">
-        <%= pin.description %><br/>
-        <%- if pin.user%>
-          <strong><%= pin.user.twitter_handle ? pin.user.twitter_handle_display : pin.user.email %></strong>
-        <% end %>  
-        <% if pin.user == current_user %>
-          <div class="actions">
-            <%= link_to 'Edit', edit_pin_path(pin) %>
-            <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+<
+<div id="pins" class="transitions-enabled">
+	<% @pins.each do |pin| %>
+	<div class="box panel panel-default">
+		<%= link_to image_tag(pin.image.url(:medium)), pin %>
+		<div class="panel-body">
+			<%= pin.description %>
+			<br/>
+			<p>
+				<%- if pin.user%>
+				<%- if pin.user.name.present?%>
+				<strong><%= pin.user.name %></strong>
+				<br/>
+				<% end %>
+				<%- if pin.user.email_verified?%>
+				<strong><%= pin.user.email %></strong>
+				<br/>
+				<% end %>
+				<%- if pin.user.twitter_handle%>
+				<strong><%= pin.user.twitter_handle_display %></strong>
+				<% end%>
+				<% end %>
+			</p>
+
+			<% if pin.user == current_user %>
+			<div class="actions">
+				<%= link_to 'Edit', edit_pin_path(pin) %>
+				<%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</div>
+			<% end %>
+			<%= link_to "https://www.facebook.com/dialog/feed?app_id=323761284454080&display=popup&caption=#{pin.description}&link=#{request.protocol}#{request.host_with_port}#{pin_path(pin)}&redirect_uri=#{request.protocol}#{request.host_with_port}&picture=#{pin.image.url(:medium)}" do %>
+			<button class="btn btn-facebook">
+				<i class="fa fa-facebook"></i> | Share
+			</button>
+			<%end%>
+			<%= link_to "https://twitter.com/intent/tweet?text=#{pin.description} %23iam21today,Chk it out on #{request.protocol}#{request.host_with_port}#{pin_path(pin)}" do %>
+			<button class="btn btn-twitter">
+				<i class="fa fa-twitter"></i> | Share
+			</button>
+			<%end%>
+		</div>
+	</div>
+	<% end %>
 </div>

@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
         password: Devise.friendly_token[0,20]
       )
   end
+
+  def email_verified?
+    self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
   
   def twitter_handle_display
     twitter_handle ? "@#{twitter_handle}" : ""

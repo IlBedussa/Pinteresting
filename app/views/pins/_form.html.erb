@@ -15,7 +15,7 @@
 
 <div class="form-group">
 	<%= f.file_field :image, class: "hidden", :id => "image_file" %>
-	<div class = "form-control">
+	<div>
 		<button onclick="document.getElementById('image_file').click(); return false;">
 			<i  class="fa fa-paperclip fa-4"> Choose File</i>
 		</button>
@@ -24,10 +24,29 @@
 </div>
 
 <div class="form-group">
-	<%= f.label :description %>
-	<%= f.text_area :description, class: "form-control", style: "width:700px; height:250px;", :placeholder => "Please write here your birthday's message....." %>
+	<%= f.label "Message"%>
+	<%= f.text_area :description, class: "form-control", style: "width:700px; height:250px;", :placeholder => "Please write here your birthday's message.....", :id => "new_pin_description" %>
+	<div id="counter_text">
+		Dont be lazy, <span id="display_count", style='color:red;'>150</span> words please to make it a cool message :)
+	</div>
 </div>
+
 <div class="form-group">
 	<%= f.submit "Send the message", class: "btn btn-primary" %>
 </div>
 <% end %>
+
+<script>
+	$(document).ready(function() {
+		$("#new_pin_description").on('keyup', function() {
+			var words = this.value.length;
+
+			if (words < 150) {
+				$('#display_count').text(150 - words);
+				$('#counter_text').removeClass("hidden");
+			} else {
+				$('#counter_text').addClass("hidden");
+			}
+		});
+	}); 
+</script>

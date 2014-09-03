@@ -1,27 +1,33 @@
 <%= form_for @pin, html: { multipart: true } do |f| %>
-  <% if @pin.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pin.errors.count, "error") %> prohibited this message from being saved :(( </h2>
+<% if @pin.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@pin.errors.count, "error") %> prohibited this message from being saved :(( </h2>
 
-      <ul>
-      <% @pin.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @pin.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="form-group">
-    <%= f.file_field :image, class: "hidden", :id => "image_file" %>
-    <%= f.label "Choose a picture of us, or choose whatever you want, but should be cool ;-)", :for => "image_file",  class: "btn btn-primary"%>
-  </div>
+<div class="form-group">
+	<%= f.file_field :image, class: "hidden", :id => "image_file" %>
+	<div class = "form-control">
+		<button onclick="document.getElementById('image_file').click(); return false;">
+			<i  class="fa fa-paperclip fa-4"> Choose File</i>
+		</button>
+		<%= f.label "Choose a picture of us, or choose whatever you want, but should be cool ;-)", :for => "image_file", style: "margin-left: 10px"%>
+	</div>
+</div>
 
-  
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control", style: "width:700px; height:250px;", :placeholder => "Please write here your birthday's message....." %>
-  </div>
-  <div class="form-group">
-    <%= f.submit "Send the message", class: "btn btn-primary" %>
-  </div>
+<div class="form-group">
+	<%= f.label :description %>
+	<%= f.text_area :description, class: "form-control", style: "width:700px; height:250px;", :placeholder => "Please write here your birthday's message....." %>
+</div>
+<div class="form-group">
+	<%= f.submit "Send the message", class: "btn btn-primary" %>
+</div>
 <% end %>

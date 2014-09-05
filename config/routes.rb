@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :pins
+  resources :pins do
+    resources :likes
+  end
+  
 
 root "pins#index"
 get "about" => "pages#about"

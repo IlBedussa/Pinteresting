@@ -4,8 +4,23 @@
 	<div class="box panel panel-default">
 		<%= link_to image_tag(pin.image.url(:medium)), pin %>
 		<div class="panel-body">
+			<div style="float:right">
+			
+				<span style="color:pink !important;" id="counts_<%=pin.id%>" data-count="<%=pin.likes.count %>">
+					<% if pin.likes.count > 0 %>+<%=pin.likes.count %><%end%></span>
+			
+			</div>
 			<%= pin.description %>
 			<br/>
+			<div style="float: right" id="votingBlock_<%=pin.id%>">
+				<% if user_signed_in? && pin.user != current_user %>
+					<% if pin.likes.where(user_id: current_user.id).blank? %>
+						<%= link_to "Like",  id: "like_pin", data: {pin_id: pin.id, count: pin.likes.count} do %>
+							<%= image_tag("like-button3d.jpg", :style => "width:45px;")%>
+						<%end%>
+					<% end %>
+				<% end %>
+			</div>
 			<p>
 				<%- if pin.user%>
 				<%- if pin.user.name.present?%>
@@ -28,17 +43,7 @@
 				<%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
 			</div>
 			<% end %>
-			<% if user_signed_in? && pin.user != current_user %>
-				<% if pin.likes.where(user_id: current_user.id).blank? %>
-					<%= link_to "Like",  id:"like_pin", data: {pin_id: pin.id} do %>
-						<i class="fa fa-facebook"></i>
-					<%end%>
-				<% else %>
-					<%= link_to "Unlike", id:"unlike_pin", data: {like_id: pin.likes.where(user_id: current_user.id).first.id} do %>
-						<i class="fa fa-twitter"></i>
-					<% end %>
-				<% end %>
-			<% end %>
+			
 			<%= link_to "https://www.facebook.com/dialog/feed?app_id=323761284454080&display=popup&caption=#{pin.description}&link=#{request.protocol}#{request.host_with_port}#{pin_path(pin)}&redirect_uri=#{request.protocol}#{request.host_with_port}&picture=#{pin.image.url(:medium)}" do %>
 			<button class="btn btn-facebook">
 				<i class="fa fa-facebook"></i> | Share

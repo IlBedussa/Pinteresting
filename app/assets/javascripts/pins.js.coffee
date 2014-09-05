@@ -17,15 +17,17 @@ $ ->
   $("#like_pin").click (event) ->
     event.preventDefault()
     formData = $(this).data()
-    
+    counts = formData.count + 1;
+    element = $(this)
     $.ajax 
       url: "/pins/"+formData.pinId+"/likes"
       type: 'POST'
       dataType: 'json'
       error: (jqXHR, textStatus, errorThrown) ->
-        console.log("error")
+        alert "Error!"
       success: (data, textStatus, jqXHR) ->
-        console.log("success")
+        element.hide()
+        $('#counts_'+formData.pinId).text("+"+counts)
     return
     
   $("#unlike_pin").click (event) ->
@@ -37,9 +39,9 @@ $ ->
       type: 'DELETE'
       dataType: 'json'
       error: (jqXHR, textStatus, errorThrown) ->
-        console.log("error")
+        alert "Error!"
       success: (data, textStatus, jqXHR) ->
-        console.log("success")
+        alert "Disliked!"
     return
     
     

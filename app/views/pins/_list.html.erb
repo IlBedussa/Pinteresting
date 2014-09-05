@@ -29,12 +29,12 @@
 			</div>
 			<% end %>
 			<% if user_signed_in? && pin.user != current_user %>
-				<% if pin.likes.where(user_id: current_user.id).count <= 0 %>
+				<% if pin.likes.where(user_id: current_user.id).blank? %>
 					<%= link_to "Like",  id:"like_pin", data: {pin_id: pin.id} do %>
 						<i class="fa fa-facebook"></i>
 					<%end%>
 				<% else %>
-					<%= link_to "Unlike", id:"unlike_pin", data: {like_id: pin.likes.where(user_id: current_user.id)[0].id} do %>
+					<%= link_to "Unlike", id:"unlike_pin", data: {like_id: pin.likes.where(user_id: current_user.id).first.id} do %>
 						<i class="fa fa-twitter"></i>
 					<% end %>
 				<% end %>

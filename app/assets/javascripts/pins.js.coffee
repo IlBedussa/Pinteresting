@@ -16,22 +16,30 @@ $ ->
   
   $("#like_pin").click (event) ->
     event.preventDefault()
-    pin_id = $(this).data()
+    formData = $(this).data()
     
     $.ajax 
-      url: "/pins/"+pin_id.pinId+"/likes"
+      url: "/pins/"+formData.pinId+"/likes"
       type: 'POST'
       dataType: 'json'
       error: (jqXHR, textStatus, errorThrown) ->
-        alert textStatus
+        console.log("error")
       success: (data, textStatus, jqXHR) ->
-        alert data
+        console.log("success")
     return
     
   $("#unlike_pin").click (event) ->
-    $("#loginBtns").removeClass "hidden"
-    $("#happyBdayBtn").addClass("hidden")
     event.preventDefault()
+    formData = $(this).data()
+    console.log(formData)  
+    $.ajax 
+      url: "/likes/" + formData.likeId 
+      type: 'DELETE'
+      dataType: 'json'
+      error: (jqXHR, textStatus, errorThrown) ->
+        console.log("error")
+      success: (data, textStatus, jqXHR) ->
+        console.log("success")
     return
     
     

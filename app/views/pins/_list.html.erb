@@ -12,7 +12,7 @@
 			</div>
 			<%= pin.description %>
 			<br/>
-			<div style="float: right" id="votingBlock_<%=pin.id%>">
+			<div style="float: right">
 				<% if user_signed_in? && pin.user != current_user %>
 					<% if pin.likes.where(user_id: current_user.id).blank? %>
 						<%= link_to "Like",  id: "like_pin", data: {pin_id: pin.id, count: pin.likes.count} do %>

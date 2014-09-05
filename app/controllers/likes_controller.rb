@@ -3,7 +3,9 @@ class LikesController < ApplicationController
   before_action :authenticate_user!
   
   def create
-    @like = pins.likes.build(like_params)
+    @pin = pins.where(id: pin_id);
+    
+    @like = current_user.pins.likes.build(like_params)
     if @like.save
       puts "Created"
       render :json => "success"
@@ -21,7 +23,7 @@ class LikesController < ApplicationController
   
   private
   def like_params
-    params.permit(:pin_id)
+    params.permit(current_user.id, :pin_id)
   end
   
 end

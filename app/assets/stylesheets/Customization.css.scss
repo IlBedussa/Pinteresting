@@ -17,4 +17,53 @@ $jumbotron-bg:                                         white;
 .navbar-brand {
      font-weight: bold;
 }
+
+.ui.horizontal.divider {
+position: relative;
+top: 0;
+left: 0;
+margin: 1rem 1.5rem;
+height: auto;
+padding: 0;
+line-height: 1;
+}
+.ui.horizontal.divider, .ui.vertical.divider {
+border: none;
+background-color: transparent;
+font-size: .875rem;
+font-weight: 700;
+text-align: center;
+text-transform: uppercase;
+color: rgba(0,0,0,.8);
+}
+.ui.divider {
+margin: 1rem 0;
+border-top: 1px solid rgba(0,0,0,.1);
+border-bottom: 1px solid rgba(255,255,255,.8);
+line-height: 1;
+height: 0;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+-webkit-tap-highlight-color: transparent;
+}
+.ui.horizontal.divider:before {
+left: 0;
+margin-left: -1.5rem;
+}
+.ui.horizontal.divider:after, .ui.horizontal.divider:before {
+position: absolute;
+content: " ";
+z-index: 3;
+width: 50%;
+top: 50%;
+height: 0;
+border-top: 1px solid rgba(0,0,0,.1);
+border-bottom: 1px solid rgba(255,255,255,.8);
+}
 @import 'bootstrap'; 

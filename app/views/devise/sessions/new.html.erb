@@ -1,30 +1,30 @@
-<div class="panel panel-default">
+<div class="panel panel-default" style="width: 500px;margin-left: 350px;">
   <div class="panel-heading">
-    <div class="panel-title">
-      <h1>Sign in</h1>
+    <div class="panel-title" style="text-align:center">
+      <h1>Login to Pinteresting</h1>
     </div>
   </div>
   <div class="panel-body">
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :style => "width:300px;") do |f| %>
 
       <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, class: "form-control", :autofocus => true %>
+        <%= f.email_field :email, class: "form-control", :autofocus => true, placeholder:"Email / Username" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, class: "form-control" %>
+        <%= f.password_field :password, class: "form-control" , placeholder:"Password" %>
       </div>
-
-      
-
       <div class="form-group">
-        <%= f.submit "Sign in", class: "btn btn-primary" %>
+        <%= f.submit "Sign in", class: "btn btn-primary", style: "width:470px;" %>
       </div>
     <% end %>
-  </div>
-  <div class="panel-footer">
+    <div class="ui horizontal divider">
+      Or
+    </div>
+    <div class="panel-footer">
     <%= render "devise/shared/links" %>
   </div>
+  </div>
+
+  
 </div>

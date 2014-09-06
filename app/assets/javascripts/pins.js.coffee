@@ -13,24 +13,55 @@ $ ->
     $("#happyBdayBtn").addClass("hidden")
     event.preventDefault()
     return
+    
+  like_pin = (event, formData)->
+    event.preventDefault()
+    counts = formData.count + 1;
+    element = $(this)
+    $.ajax 
+      url: "/pins/"+formData.pinId+"/likes"
+      type: 'POST'
+      dataType: 'html'
+      error: (jqXHR, textStatus, errorThrown) ->
+        alert "Error!"
+      success: (data, textStatus, jqXHR) ->
+        $('#pindiv_'+formData.pinId).html(data)
+        unBindEventBinders()
+        loadEventBinders()
+    
+  unlike_pin = (event, formData)->
+    event.preventDefault()
+    $.ajax 
+      url: "/likes/" + formData.likeId 
+      type: 'DELETE'
+      dataType: 'html'
+      error: (jqXHR, textStatus, errorThrown) ->
+        alert "Error!"
+      success: (data, textStatus, jqXHR) ->
+        $('#pindiv_'+formData.pinId).html(data)
+        unBindEventBinders()
+        loadEventBinders()
   
-  $("#like_pin").click (event) ->
-    event.preventDefault()
-    pin_id = $(this).data()
-    type: 'POST'
-    dataType: 'json'
-    action: '/pins/'+pin_id.pinId+'/likes'
-    error: (jqXHR, textStatus, errorThrown) ->
-      alert textStatus
-    success: (data, textStatus, jqXHR) ->
-      alert data
-    return
+  unlike_pin_bind = ->
+    $(".unlike_pin").on "click", (event) ->
+      formData = undefined
+      formData = $(this).data()
+      unlike_pin event, formData
+
+  like_pin_bind = ->
+    $(".like_pin").on "click", (event) ->
+      formData = undefined
+      formData = $(this).data()
+      like_pin event, formData
+      
+  loadEventBinders = ->
+    like_pin_bind()
+    unlike_pin_bind()
     
-  $("#unlike_pin").click (event) ->
-    $("#loginBtns").removeClass "hidden"
-    $("#happyBdayBtn").addClass("hidden")
-    event.preventDefault()
-    return
+  unBindEventBinders = ->
+    $(".like_pin").unbind()
+    $(".unlike_pin").unbind()
     
+  loadEventBinders()
     
     

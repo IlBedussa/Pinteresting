@@ -1,27 +1,18 @@
 class LikesController < ApplicationController
-  
+
   before_action :authenticate_user!
-  
   def create
-    @like = pins.likes.build(like_params)
-    if @like.save
-      puts "Created"
-      render :json => "success"
-    else
-      puts "failed"
-      render :json => "failed"
-    end
-    
+    @like = current_user.likes.build(pin_id: params[:pin_id])
+    @like.save
+    @pin = Pin.find(params[:pin_id]);
+#    render :template =>  "pins/_pin" ,:locals => {:pin => @pin}
+    render :partial =>"pins/pin", :locals => {:pin => @pin}
   end
-  
+
   def destroy
-    @pin.destroy
-    redirect_to pins_url
+    pinId = Like.find(params[:id]).pin_id
+    Like.find(params[:id]).destroy
+    @pin = Pin.find(pinId)
+    render :partial =>"pins/pin", :locals => {:pin => @pin}
   end
-  
-  private
-  def like_params
-    params.permit(:pin_id)
-  end
-  
 end

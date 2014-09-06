@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :likes , :only => [:destroy]
   resources :pins do
-    resources :likes
+    resources :likes , :only => [:create]
   end
   
 

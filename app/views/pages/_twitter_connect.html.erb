@@ -1,0 +1,81 @@
+<style>
+	.twitter_button {
+		-webkit-background-clip: border-box;
+		-webkit-background-origin: padding-box;
+		-webkit-background-size: auto;
+		-webkit-box-shadow: rgb(227, 227, 227) 0px 2px 5px 0px inset;
+		-webkit-font-smoothing: antialiased;
+		-webkit-transition-delay: 0s;
+		-webkit-transition-duration: 0.2s;
+		-webkit-transition-property: color;
+		-webkit-transition-timing-function: ease;
+		background-attachment: scroll;
+		background-clip: border-box;
+		background-color: rgb(255, 255, 255);
+		background-origin: padding-box;
+		background-size: auto;
+		border-bottom-color: #3498db;;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-image-outset: 0px;
+		border-image-repeat: stretch;
+		border-image-slice: 100%;
+		border-image-source: none;
+		border-image-width: 1;
+		border-left-color: #3498db;;
+		border-left-style: solid;
+		border-left-width: 1px;
+		border-right-color: #3498db;;
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top-color: #3498db;;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		border-top-style: solid;
+		border-top-width: 1px;
+		box-shadow: rgb(227, 227, 227) 0px 2px 5px 0px inset;
+		box-sizing: border-box;
+		color: #3498db;;
+		cursor: auto;
+		display: inline-block;
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 11px;
+		font-style: normal;
+		font-variant: normal;
+		font-weight: 500;
+		height: 43px;
+		line-height: 12px;
+		margin-bottom: 0px;
+		margin-left: 0px;
+		margin-right: 5px;
+		margin-top: 0px;
+		min-width: 0px;
+		outline-color: #3498db;;
+		outline-style: none;
+		outline-width: 0px;
+		padding-bottom: 8px;
+		padding-left: 47px;
+		padding-right: 10px;
+		padding-top: 9px;
+		position: relative;
+		text-align: left;
+		text-decoration: none solid #3498db;;
+		text-transform: uppercase;
+		transition-delay: 0s;
+		transition-duration: 0.2s;
+		transition-property: color;
+		transition-timing-function: ease;
+		vertical-align: baseline;
+		white-space: nowrap;
+		width: 150.5px;
+	}
+</style>
+<%= link_to user_omniauth_authorize_path("twitter") do %>
+<button class="twitter_button">
+	TWITTER
+	<br>
+	CONNECT
+</button>
+<%end%>

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :pins
+  resources :likes , :only => [:destroy]
+  resources :pins do
+    resources :likes , :only => [:create]
+  end
+  
 
 root "pins#index"
 get "about" => "pages#about"

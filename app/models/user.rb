@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   has_many :identities, :dependent => :destroy
   has_many :pins, :dependent => :destroy
+  has_many :likes, :dependent => :destroy
   
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)

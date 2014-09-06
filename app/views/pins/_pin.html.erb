@@ -13,11 +13,11 @@
 				<% if user_signed_in? && pin.user != current_user %>
 					<% if pin.likes.where(user_id: current_user.id).blank? %>
 						<%= link_to "Like",  id: "like_pin_#{pin.id}", data: {pin_id: pin.id}, class: "like_pin" do %>
-							<%= image_tag("like-button3d.jpg", :style => "width:45px;")%>
+							<%= image_tag("starempty.png", :style => "width:45px;")%>
 						<%end%>
 					<% else %>
 						<%= link_to "Unlike",  id: "unlike_pin_#{pin.id}",data: {pin_id: pin.id,like_id: pin.likes.where(user_id: current_user.id).first.id}, class: "unlike_pin" do %>
-							<%= image_tag("like2.jpg", :style => "width:45px;")%>
+							<%= image_tag("starfilled.jpg", :style => "width:45px;")%>
 						<%end%>
 					<% end %>
 				<% end %>

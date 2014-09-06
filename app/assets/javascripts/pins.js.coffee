@@ -14,6 +14,13 @@ $ ->
     event.preventDefault()
     return
     
+  $("#happyBdayplus21").click (event) ->
+    $("#loginBtns").removeClass "hidden"
+    $("#happyBdayBtn").addClass("hidden")
+    $("#happyBdayBtn").focus()
+    event.preventDefault()
+    return
+    
   like_pin = (event, formData)->
     event.preventDefault()
     counts = formData.count + 1;

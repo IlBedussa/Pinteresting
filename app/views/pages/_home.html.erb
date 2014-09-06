@@ -1,6 +1,32 @@
 <div class="jumbotron center">
-	
-  <h1 style="font-size:50px !important;">Hi! Today I'm 21! Its my Birthday! So cool,right?</h1>
+	<div class="row">
+		<div class="col-xs-3">
+			<%= image_tag("david.jpg" , :style => "height:150px;width:150px;")%>
+		</div>
+		<div class="col-xs-6">
+			<h1 style="font-size:30px !important;">Hi! Today I'm 21! Its my Birthday! So cool,right?</h1>
+		</div>
+		<div class="col-xs-3">
+			<% if user_signed_in? %>
+			  	<div>
+			  	<p>
+			  		<%if current_user.pins.count > 0 %>
+			  			<h1 style="font-size:70px !important;color: #3498db;">+21</h1>
+			  		<% else %>
+						<%= link_to "+21",new_pin_path, class:"plus21" %>  		
+			  		<%end %>
+			  	</p>
+  				</div>
+			 <%else %>
+			  	
+			  <div id="happyBdayplus21">
+					<%= link_to "+21","#", class:"plus21"%>
+			  </div>
+			  <%end%>
+			
+		</div>
+	</div>
+  
   <% if user_signed_in? %>
   	<div>
   	<p>

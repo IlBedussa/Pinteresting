@@ -22,12 +22,8 @@
   <% end -%>
 <% end -%> -->
 <div>
-<%= link_to user_omniauth_authorize_path("twitter"), style:"float:left" do %>
-  <button class="btn btn-lg"><i class="fa fa-twitter"></i> | TWITTER <br/> CONNECT</button>
-<%end%>
-<%= link_to user_omniauth_authorize_path("facebook"), style:"float:right" do %>
- 	<button class="btn btn-lg"><i class="fa fa-facebook"></i> | FACEBOOK <br/> CONNECT</button>
-<%end%>
+<%= render 'pages/facebook_connect'%>
+<%= render 'pages/twitter_connect'%>	
 </div>
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
 Not a member yet?  <%= link_to "Register now", new_registration_path(resource_name), style:"color:GREEN;align:center;" %>- its fun and easy!<br />

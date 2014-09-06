@@ -1,4 +1,4 @@
-<div class="panel panel-default" style="width: 500px;margin-left: 350px;">
+<div class="panel panel-default" style="width: 350px;margin-left: 350px;">
   <div class="panel-heading">
     <div class="panel-title" style="text-align:center">
       <h1>Login to Pinteresting</h1>
@@ -8,14 +8,14 @@
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :style => "width:300px;") do |f| %>
 
       <div class="form-group">
-        <%= f.email_field :email, class: "form-control", :autofocus => true, placeholder:"Email / Username" %>
+        <%= f.email_field :email, class: "form-control", :autofocus => true, placeholder:"Email", :style => "height:45px;" %>
       </div>
 
       <div class="form-group">
-        <%= f.password_field :password, class: "form-control" , placeholder:"Password" %>
+        <%= f.password_field :password, class: "form-control" , placeholder:"Password", :style => "height:45px;" %>
       </div>
       <div class="form-group">
-        <%= f.submit "Sign in", class: "btn btn-primary", style: "width:470px;" %>
+        <%= f.submit "Sign in", class: "btn btn-primary", style: "width:320px;height:45px;" %>
       </div>
     <% end %>
     <div class="ui horizontal divider">

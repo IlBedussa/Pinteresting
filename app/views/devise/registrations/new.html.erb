@@ -1,4 +1,4 @@
-<div class="panel panel-default"  style="width: 500px;margin-left: 350px;">
+<div class="panel panel-default"  style="width: 350px;margin-left: 350px;">
   <div class="panel-heading" style="text-align:center">
     <h1>Sign up</h1>
   </div>
@@ -8,19 +8,19 @@
       <%= devise_error_messages! %>
 
       <div class="form-group">
-        <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Username" %>
+        <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Username", :style => "height:45px;"%>
       </div>
 
       <div class="form-group">
-        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email", :style => "height:45px;"%>
       </div>
 
       <div class="form-group">
-        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+        <%= f.password_field :password, class: "form-control", placeholder: "Password", :style => "height:45px;" %>
       </div>
 
       <div class="form-group">
-        <%= f.submit "Sign up", class: "btn btn-primary", style: "width:470px;" %>
+        <%= f.submit "Sign up", class: "btn btn-primary", style: "width:320px;height:45px;" %>
       </div>
     <% end %>
     <div class="ui horizontal divider">

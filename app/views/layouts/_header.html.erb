@@ -12,8 +12,8 @@
       <%= link_to "David B +21", root_path, class: "navbar-brand" %>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <% if user_signed_in? %>
-   	 <span class="navbar-brand" style="font-size:x-large;color:#000;margin-left:70px;">Always remember, Never Forget 9/11</span>
+    <% if user_signed_in? && current_user.pins.count == 0 %>
+   	 	<span class="navbar-brand" style="font-size:x-large;color:#000;margin-left:70px;">Always remember, Never Forget 9/11</span>
     <%else%>
     	<span class="navbar-brand" style="font-size:x-large;color:#000;margin-left:240px;">Always remember, Never Forget 9/11</span>
     <%end%>

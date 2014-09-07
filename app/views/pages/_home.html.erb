@@ -4,59 +4,75 @@
 			<%= image_tag("davidB.jpg" , :style => "height:150px;width:150px;")%>
 		</div>
 		<div class="col-xs-6" style="margin-left: -65px;">
-			<h1 style="font-size:30px !important;">Hi! Today I'm 21! Its my Birthday! <br/>
-				So cool,right?</h1>
+			<h1 style="font-size:30px !important;">Hi! Today I'm 21! Its my Birthday!
+			<br/>
+			So cool,right?</h1>
 		</div>
 		<div class="col-xs-3" style="margin-left: -95px;">
 			<% if user_signed_in? %>
-			  	<div>
-			  	<p>
-			  		<%if current_user.pins.count > 0 %>
-			  			<h1 style="font-size:70px !important;color: #3498db;">+21</h1>
-			  		<% else %>
-						<%= link_to "+21",new_pin_path, class:"plus21" %>  		
-			  		<%end %>
-			  	</p>
-  				</div>
-			 <%else %>
-			  	
-			  <div id="happyBdayplus21">
-					<%= link_to "+21","#", class:"plus21"%>
-			  </div>
-			  <%end%>
-			
+			<div>
+				<p>
+					<%if current_user.pins.count > 0 %>
+					<h1 style="font-size:70px !important;color: #3498db;">+21</h1>
+					<% else %>
+					<%= link_to "+21",new_pin_path, class:"plus21" %>
+					<%end %>
+				</p>
+			</div>
+			<%else %>
+
+			<div id="happyBdayplus21">
+				<%= link_to "+21","#", class:"plus21"%>
+			</div>
+			<%end%>
+
 		</div>
 	</div>
-  
-  <% if user_signed_in? %>
-  	<div>
-  	<p>
-  		<%if current_user.pins.count > 0 %>
-  			<h2 style="font-size:30px;color:#099; !important;">Thanks for your wishes! :)</h2>
-  		<% else %>
-			<%= link_to "Say Happy Birthday ;-)",new_pin_path ,class: "btn btn-primary btn-lg" %>  		
-  		<%end %>
-  	</p>
-  </div>
- <%else %>
-  	
-  <div id="happyBdayBtn">
-  	<p>
-		<%= link_to "Say Happy Birthday ;-)","#" ,class: "btn btn-primary btn-lg" %>  		
-  	</p>
-  </div>
-  <%end%>
-  <div id="loginBtns" class="hidden">
-	  <p>
-	    <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %> 
-    	<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
-  		<%= link_to user_omniauth_authorize_path("twitter") do %>
-  			<button class="btn btn-twitter btn-lg"><i class="fa fa-twitter"></i> | Connect with Twitter</button>
- 		<%end%>
-  		<%= link_to user_omniauth_authorize_path("facebook") do %>
- 			<button class="btn btn-facebook btn-lg"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
- 		<%end%>
-	  </p>
-  </div>
+
+	<% if user_signed_in? %>
+	<div>
+		<p>
+			<%if current_user.pins.count > 0 %>
+			<h2 style="font-size:30px;color:#099; !important;">Thanks for your wishes! :)</h2>
+			<% else %>
+			<%= link_to "Say Happy Birthday ;-)",new_pin_path ,class: "btn btn-primary btn-lg" %>
+			<%end %>
+		</p>
+	</div>
+	<%else %>
+
+	<div id="happyBdayBtn">
+
+		<p>
+			<%= link_to "#" do %>
+			<button class="login_button new_button" style="width:230px;">
+				Say Happy Birthday ;-)
+			</button>
+			<%end%>
+		</p>
+	</div>
+	<%end%>
+	<div id="loginBtns" class="hidden">
+		<%= link_to new_user_session_path do %>
+		<button class="login_button new_button">
+			Login
+		</button>
+		<%end%>
+		<%= link_to new_user_registration_path do %>
+		<button class="signup_button new_button">
+			Sign up
+		</button>
+		<%end%>
+		<%= link_to user_omniauth_authorize_path("twitter") do %>
+		<button class="twitter_button new_button" style="width:240px;">
+			<i class="fa fa-twitter"></i> | Connect with Twitter
+		</button>
+		<%end%>
+		<%= link_to user_omniauth_authorize_path("facebook") do %>
+		<button class="facebook_button new_button" style="width:250px;">
+			<i class="fa fa-facebook"></i> | Connect with Facebook
+		</button>
+		<%end%>
+	</div>
 
 </div>

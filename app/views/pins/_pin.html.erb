@@ -3,8 +3,8 @@
 		<div class="panel-body">
 			<div style="float:right">
 			
-				<span style="color:pink !important;">
-					<% if pin.likes.count > 0 %>+<%=pin.likes.count %><%end%></span>
+				<span style="color:#3498db; !important;">
+					<% if pin.likes.count > 0 %><%= image_tag("smallblueheart.png",:style => "width:20px;height:20px;")%><%=pin.likes.count %><%end%></span>
 			
 			</div>
 			<%= pin.description %>

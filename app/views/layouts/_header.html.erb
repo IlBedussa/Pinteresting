@@ -11,8 +11,12 @@
       </button>
       <%= link_to "David B +21", root_path, class: "navbar-brand" %>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
+    <% if user_signed_in? %>
+   	 <span class="navbar-brand" style="margin-left:180px;">Always remember, Never Forget 9/11</span>
+    <%else%>
+    	<span class="navbar-brand" style="margin-left:300px;">Always remember, Never Forget 9/11</span>
+    <%end%>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>

@@ -1,7 +1,7 @@
 <
 <div id="pins" class="transitions-enabled">
 	<% @pins.each do |pin| %>
-		<div class="box panel panel-default" id="pindiv_<%=pin.id%>">
+		<div class="box panel panel-default pindiv" id="pindiv_<%=pin.id%>" data-id="<%=pin.id%>">
 			<%= render 'pin', :pin => pin %>
 		</div>
 	<% end %>

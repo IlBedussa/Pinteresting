@@ -4,7 +4,7 @@
 			<div style="float:right">
 			
 				<span style="color:#3498db; !important;">
-					<% if pin.likes.count > 0 %><%= image_tag("smallblueheart.png",:style => "width:20px;height:20px;")%><%=pin.likes.count %><%end%></span>
+					<% if pin.likes.count > 0 %><%= image_tag("smallblueheart.png",:style => "width:20px;height:18px;")%><%=pin.likes.count %><%end%></span>
 			
 			</div>
 			<%= pin.description %>
@@ -13,11 +13,11 @@
 				<% if user_signed_in? && pin.user != current_user %>
 					<% if pin.likes.where(user_id: current_user.id).blank? %>
 						<%= link_to "Like",  id: "like_pin_#{pin.id}", data: {pin_id: pin.id}, class: "like_pin" do %>
-							<%= image_tag("like-button3d.jpg", :style => "width:45px;")%>
+							<%= image_tag("like-button3d.jpg", :style => "width:40px;")%>
 						<%end%>
 					<% else %>
 						<%= link_to "Unlike",  id: "unlike_pin_#{pin.id}",data: {pin_id: pin.id,like_id: pin.likes.where(user_id: current_user.id).first.id}, class: "unlike_pin" do %>
-							<%= image_tag("ilikeit.jpg", :style => "width:45px;")%>
+							<%= image_tag("ilikeit.jpg", :style => "width:40px;")%>
 						<%end%>
 					<% end %>
 				<% end %>
@@ -44,15 +44,16 @@
 				<%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
 			</div>
 			<% end %>
-			
-			<%= link_to "https://www.facebook.com/dialog/feed?app_id=323761284454080&display=popup&caption=#{pin.description}&link=#{request.protocol}#{request.host_with_port}#{pin_path(pin)}&redirect_uri=#{request.protocol}#{request.host_with_port}&picture=#{pin.image.url(:medium)}" do %>
-			<button class="btn btn-facebook">
-				<i class="fa fa-facebook"></i> | Share
-			</button>
-			<%end%>
-			<%= link_to "https://twitter.com/intent/tweet?text=#{pin.description} %23iam21today,Chk it out on #{request.protocol}#{request.host_with_port}#{pin_path(pin)}" do %>
-			<button class="btn btn-twitter">
-				<i class="fa fa-twitter"></i> | Share
-			</button>
+			<div id="shareBtns<%=pin.id%>" class="hidden">
+				<%= link_to "https://www.facebook.com/dialog/feed?app_id=323761284454080&display=popup&caption=#{pin.description}&link=#{request.protocol}#{request.host_with_port}#{pin_path(pin)}&redirect_uri=#{request.protocol}#{request.host_with_port}&picture=#{pin.image.url(:medium)}" do %>
+				<button class="btn btn-facebook">
+					<i class="fa fa-facebook"></i> | Share
+				</button>
+				<%end%>
+				<%= link_to "https://twitter.com/intent/tweet?text=#{pin.description} %23iam21today,Chk it out on #{request.protocol}#{request.host_with_port}#{pin_path(pin)}" do %>
+				<button class="btn btn-twitter">
+					<i class="fa fa-twitter"></i> | Share
+				</button>
+			</div>
 			<%end%>
 		</div>

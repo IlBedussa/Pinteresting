@@ -14,6 +14,16 @@ $ ->
     event.preventDefault()
     return
     
+  $('.pindiv').on 'mouseenter', ->
+      id =$(this).data().id
+      $('#shareBtns'+id).removeClass("hidden")
+      return
+      
+   $('.pindiv').on 'mouseleave', ->
+      id =$(this).data().id
+      $('#shareBtns'+id).addClass("hidden")
+      return
+    
   $("#happyBdayplus21").click (event) ->
     $("#loginBtns").removeClass "hidden"
     $("#happyBdayBtn").addClass("hidden")

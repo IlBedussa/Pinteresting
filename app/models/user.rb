@@ -46,11 +46,11 @@ class User < ActiveRecord::Base
   def self.generate_user_from_facebook(auth, email)
     puts "####################################"
     puts auth.info
-    sep = auth.info.name.include?('?') ? '&' : '?'
+    sep = auth.info.image.include?('?') ? '&' : '?'
       user = User.new(name: auth.info.name,
         email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
         password: Devise.friendly_token[0,20],
-        profile_picture: auth.info.name + "#{sep}width=1000"
+        profile_picture: auth.info.image + "#{sep}width=1000"
       )
   end
 

@@ -1,8 +1,7 @@
 <%- digits_array = Pin.count.to_s.chars.to_a.reverse%>
-<div class="footer", style="background-color:white;height: 220px; margin-top: 50px;">
+<div class="footer", style="background-color:white;height: 160px; margin-top: 50px;">
 	<div class="container">
-		<div style="float:left" class="footer_teaser">
-			<h3>Contact Details</h3>
+		<div style="" class="footer_teaser">
 			<p>Sahil Dhankhar <br/>
 				B-402, Alaknanda Apartments,<br/>
 				Gurgaon - 122002
@@ -11,7 +10,7 @@
 			<p><i class="fa fa-phone"></i> (+124) 875-99987</p>
 			<div class="social_wrapper"><a href="https://www.facebook.com/sahild"><i class="fa fa-facebook"></i></a> <a href="http://www.twitter.com"><i class="fa fa-twitter"></i></a> <a href="#googleplus"><i class="fa fa-google-plus"></i></a></div>
 		</div>
-		<div style="float:right;">
+		<div style="float:right;margin:5px;">
 		<%- (0..3).to_a.each do |index|%>
 		 <%= image_tag("#{digits_array[3-index].to_i}.jpg", :style => "width:35px;border:4px solid #eee")%>
 		 <% end%>

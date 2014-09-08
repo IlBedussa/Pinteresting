@@ -34,17 +34,21 @@ class User < ActiveRecord::Base
   end
   
   def self.generate_user_from_twitter(auth, email)
+    puts auth
       user = User.new(name: auth.info.name,
         twitter_handle: auth.info.nickname,
         email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-        password: Devise.friendly_token[0,20]
+        password: Devise.friendly_token[0,20],
+        profile_picture: auth.info.image
       )
   end
 
   def self.generate_user_from_facebook(auth, email)
+    sep = auth[:info][:image].include?('?') ? '&' : '?'
       user = User.new(name: auth.info.name,
         email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-        password: Devise.friendly_token[0,20]
+        password: Devise.friendly_token[0,20],
+        profile_picture: auth_hash[:info][:image] + "#{sep}width=1000"
       )
   end
 
@@ -54,5 +58,13 @@ class User < ActiveRecord::Base
   
   def twitter_handle_display
     twitter_handle ? "@#{twitter_handle}" : ""
+  end
+  
+  def profile_pic_url
+    return profile_picture if profile_picture.present?
+    stripped_email = email.strip
+    downcased_email = stripped_email.downcase
+    hash = Digest::MD5.hexdigest(downcased_email)
+    "http://www.gravatar.com/#{hash}" 
   end  
 end

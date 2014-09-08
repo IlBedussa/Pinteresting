@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
       user = User.new(name: auth.info.name,
         email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
         password: Devise.friendly_token[0,20],
-        profile_picture: auth_hash[:info][:image] + "#{sep}width=1000"
+        profile_picture: auth[:info][:image] + "#{sep}width=1000"
       )
   end
 

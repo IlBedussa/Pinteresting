@@ -66,4 +66,30 @@ height: 0;
 border-top: 1px solid rgba(0,0,0,.1);
 border-bottom: 1px solid rgba(255,255,255,.8);
 }
+.social_wrapper a {
+text-align: center;
+display: inline-block;
+margin: 0 8px 0 0;
+background-color: #428bca;
+border-radius: 6px;
+border-radius: 50%;
+font-size: 20px;
+width: 50px;
+height: 50px;
+line-height: 48px;
+color: #fff;
+}
+.social_wrapper a i {
+-webkit-transition: all 100ms ease;
+transition: all 100ms ease;
+margin: 0px !important;
+padding: 0px !important;
+border: none !important;
+}
+.footer_teaser p {
+font-size: 13px;
+color:#3498DB;
+font-weight: 400;
+margin-bottom: 2px;
+}
 @import 'bootstrap'; 

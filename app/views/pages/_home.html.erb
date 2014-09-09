@@ -35,7 +35,11 @@
 			<%if current_user.pins.count > 0 %>
 			<h2 style="font-size:30px;color:#099; !important;">Thanks for your wishes! :)</h2>
 			<% else %>
-			<%= link_to "Say Happy Birthday ;-)",new_pin_path ,class: "btn btn-primary btn-lg" %>
+			<%= link_to new_pin_path do %>
+			<button class="login_button new_button" style="width:230px;">
+				Say Happy Birthday ;-)
+			</button>
+			<%end%>
 			<%end %>
 		</p>
 	</div>

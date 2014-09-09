@@ -34,7 +34,6 @@ class User < ActiveRecord::Base
   end
   
   def self.generate_user_from_twitter(auth, email)
-    puts auth
       user = User.new(name: auth.info.name,
         twitter_handle: auth.info.nickname,
         email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
@@ -44,8 +43,6 @@ class User < ActiveRecord::Base
   end
 
   def self.generate_user_from_facebook(auth, email)
-    puts "####################################"
-    puts auth.info
     sep = auth.info.image.include?('?') ? '&' : '?'
       user = User.new(name: auth.info.name,
         email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",

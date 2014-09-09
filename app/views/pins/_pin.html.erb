@@ -1,14 +1,15 @@
 <%= link_to image_tag(pin.image.url(:medium)), pin %>
-<div class="col-xs-6">
-	<img class="img-responsive img-circle" src=<%= pin.user.profile_pic_url%> />
-</div>
 
 <div class="panel-body">
+	
 	<div style="float:right">
-
 		<span style="color:#3498db; !important;"> <% if pin.likes.count > 0 %><%= image_tag("smallblueheart.png",:style => "width:20px;height:18px;")%><%= pin.likes.count %><%end%></span>
-
 	</div>
+	<div class="col-xs-6">
+		<img class="img-responsive img-circle avatar-img" src=<%= pin.user.profile_pic_url%> />
+	</div>
+	<br/><br/>
+
 	<%= pin.description %>
 	<br/>
 	<div style="float: right">

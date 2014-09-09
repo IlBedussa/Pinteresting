@@ -91,10 +91,19 @@ font-size: 13px;
 color:#777777;
 font-weight: 400;
 margin-bottom: 2px;
+line-height: 180%;
 }
 .footer_teaser {
   float:left;
   width:200px;
   margin:5px;
+}
+div.footer-counter {
+  margin-left: 42%;
+  margin-top: 5px;
+}
+div.footer-main {
+  background-color:white; 
+  margin-top: 50px;
 }
 @import 'bootstrap'; 

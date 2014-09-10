@@ -22,7 +22,7 @@ class PinsController < ApplicationController
     @pin = current_user.pins.build(pin_params)
     if @pin.save
       @user = current_user;
-      UserMailer.thanks_email(@user).deliver
+      # UserMailer.thanks_email(@user).deliver
       redirect_to @pin, notice: 'Pin was successfully created.'
     else
       render action: 'new'

@@ -30,12 +30,12 @@
 				<%= link_to 'Edit', edit_pin_path(@pin) %>
 				<% end %>
 				<%= link_to "https://www.facebook.com/dialog/feed?app_id=323761284454080&display=popup&caption=#{@pin.description}&link=#{request.protocol}#{request.host_with_port}#{pin_path(@pin)}&redirect_uri=#{request.protocol}#{request.host_with_port}&picture=#{@pin.image.url(:medium)}" do %>
-				<button class="btn btn-facebook">
+				<button class="facebook_button new_button" style="width:72px;height:30px;padding:10px;">
 					<i class="fa fa-facebook"></i> | Share
 				</button>
 				<%end%>
 				<%= link_to "https://twitter.com/intent/tweet?text=#{@pin.description} %23iam21today,Chk it out on #{request.protocol}#{request.host_with_port}#{pin_path(@pin)}" do %>
-				<button class="btn btn-twitter">
+				<button class="twitter_button new_button" style="width:78px;height:30px;padding:10px;">
 					<i class="fa fa-twitter"></i> | Share
 				</button>
 				<%end%>

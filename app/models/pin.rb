@@ -14,7 +14,7 @@ class Pin < ActiveRecord::Base
     puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
     self.description = MESSAGES.sample if self.description.blank?
     puts "###########################################"
-    self.image = open "http://www.iam21.today/default_images/#{(1..32).to_a.sample}.jpg"  if self.image.blank?
+    self.image = open Pin.unscoped.where("user_id is null").to_a.sample.image(:medium)  if self.image.blank?
     puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
   end
   

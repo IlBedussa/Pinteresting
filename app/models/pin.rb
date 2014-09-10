@@ -15,7 +15,7 @@ class Pin < ActiveRecord::Base
   
   def add_defaults
     self.description = MESSAGES.sample if self.description.blank?
-    self.image = open "http://www.1am21.today/assets/default_images/#{(1..24).to_a.sample}.jpg"  if self.image.blank?
+    self.image = open "http://www.iam21.today/default_images/#{(1..24).to_a.sample}.jpg"  if self.image.blank?
     self.save!
   end
 end

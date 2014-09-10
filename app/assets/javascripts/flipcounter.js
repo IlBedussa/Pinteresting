@@ -257,7 +257,7 @@ $( document ).ready(function() {
 	var pinscount = $('#pinscount').text();
 	var count = parseInt(pinscount,10);
 	var defaults = {
-  value: 0, inc: 1, pace: 1000, auto: true, limit:count
+  value: 0, inc: 1, pace: 500, auto: true, limit:count
 };
 
 var c1 = new flipCounter('c1', defaults);

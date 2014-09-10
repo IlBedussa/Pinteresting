@@ -6,7 +6,7 @@ class Pin < ActiveRecord::Base
 	# validates :image, presence: true
 	# validates :description, presence: true
 	validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
-  after_create :add_defaults
+  before_save :add_defaults
   MESSAGES = ["Wish you a very happy birthday David!", "Many Many happy returns of the day David!", "Have a great Birthday David!", "Here’s to lots of celebration today! We wish you lots of good health for you and your loved ones in the coming year :)", "Remember this wise saying on your happy day: the more you celebrate your life, the more there is in life to celebrate!", "Have a wonderful happy, healthy birthday and many more to come. Happy Birthday!"]
   IMAGES = ["https://www.dropbox.com/sh/7d56haqvth6edhr/AACZtaBnMf02i6l8MZ0zdqNGa/1ff2b5e340ff1c34aaab91e9b22f5b526e75858bd86687409e608ab815799a6d.jpg?dl=0",
             "https://www.dropbox.com/s/wxo0rmbuxzk8kj7/1ff2b5e340ff1c34aaab91e9b22f5b526e75858bd86687409e608ab815799a6d.jpg?dl=0",
@@ -16,6 +16,5 @@ class Pin < ActiveRecord::Base
   def add_defaults
     self.description = MESSAGES.sample if self.description.blank?
     self.image = open "http://www.iam21.today/default_images/#{(1..24).to_a.sample}.jpg"  if self.image.blank?
-    self.save!
   end
 end

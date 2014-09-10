@@ -15,7 +15,8 @@ var flipCounter = function(d, options){
     value: 0,
     inc: 1,
     pace: 1000,
-    auto: true
+    auto: true,
+    limit: 100000
   };
 
   var counter = options || {};
@@ -157,13 +158,16 @@ var flipCounter = function(d, options){
   //---------------------------------------------------------------------------//
 
   function _doCount(first){
-    var first_run = typeof first === "undefined" ? false : first;
-    x = counter.value;
-    if (!first_run) counter.value += counter.inc;
-    y = counter.value;
-    _digitCheck(x, y);
-    // Do first animation
-    if (counter.auto === true) nextCount = setTimeout(_doCount, counter.pace);
+  	console.log(counter.value + ' ' + counter.limit);
+  	if(counter.value < counter.limit) {
+  		var first_run = typeof first === "undefined" ? false : first;
+	    x = counter.value;
+	    if (!first_run) counter.value += counter.inc;
+	    y = counter.value;
+	    _digitCheck(x, y);
+	    // Do first animation
+	    if (counter.auto === true) nextCount = setTimeout(_doCount, counter.pace);
+  	}
   }
 
   function _digitCheck(x, y){
@@ -201,6 +205,23 @@ var flipCounter = function(d, options){
       }
       bit++;
     }
+    if(count < 4) {
+    	var zeroToBeAppended = 4-count;
+    	var appendHtml = '';
+    	for(var i=0;i<zeroToBeAppended;i++) {
+    		appendHtml += '<li class="digit" id="'+d+'-digit-a'+i+'">'+
+        '<div class="line"></div>'+
+        '<span class="front">'+0+'</span>'+
+        '<span class="back">'+0+'</span>'+
+        '<div class="hinge-wrap"><div class="hinge">'+
+        '<span class="front">'+0+'</span>'+
+        '<span class="back">'+0+'</span>'+
+        '</div></div>'+
+        '</li>';
+    	}
+    	html += appendHtml;
+    }
+    
 
     div.innerHTML = html;
 
@@ -236,7 +257,7 @@ $( document ).ready(function() {
 	var pinscount = $('#pinscount').text();
 	var count = parseInt(pinscount,10);
 	var defaults = {
-  value: count, inc: 0, pace: 1000, auto: false
+  value: 0, inc: 1, pace: 1000, auto: true, limit:count
 };
 
 var c1 = new flipCounter('c1', defaults);

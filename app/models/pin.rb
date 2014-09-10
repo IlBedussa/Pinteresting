@@ -7,7 +7,7 @@ class Pin < ActiveRecord::Base
 	# validates :description, presence: true
 	validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
   before_save :add_defaults
-  default_scope where(:user_id.not_eq => nil)
+  default_scope where("user_id is not null")
   MESSAGES = ["Wish you a very happy birthday David!", "Many Many happy returns of the day David!", "Have a great Birthday David!", "Here’s to lots of celebration today! We wish you lots of good health for you and your loved ones in the coming year :)", "Remember this wise saying on your happy day: the more you celebrate your life, the more there is in life to celebrate!", "Have a wonderful happy, healthy birthday and many more to come. Happy Birthday!"]
   
   def add_defaults

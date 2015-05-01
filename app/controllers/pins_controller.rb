@@ -6,7 +6,8 @@ class PinsController < ApplicationController
   before_action :list_all_pins, only: [:new, :index]
  
   def index
-  end
+  
+end
 
   def show
   end
